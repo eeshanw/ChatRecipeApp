@@ -1,0 +1,21 @@
+.navheader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.nav-item {
+  color: rgb(138, 138, 138);
+  margin: 40px;
+  font-family: "Courier New", monospace;
+  font-size: 17px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: red;
+}
