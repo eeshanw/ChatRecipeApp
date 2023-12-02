@@ -1,0 +1,90 @@
+.outline {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+  width: 40%;
+  min-height: 250px;
+  background-color: aliceblue;
+}
+
+.input-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.input-wrapper {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.input-fields {
+  text-align: center;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.ingred-button {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  width: 10%;
+}
+
+.select-wrapper {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.select-meas {
+  border-radius: 8px;
+  width: 100%;
+  text-align: center;
+  color: grey;
+}
+
+.button-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+
+.button-submit {
+  width: 30%;
+  height: 30px;
+  background-color: black;
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+}
+
+.button-submit:hover,
+.ingred-button:hover {
+  background-color: grey;
+}
+
+/* .ingredient-list {
+  display: flex;
+} */
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-right: 30px;
+  padding-left: 30px;
+  justify-content: space-evenly;
+}
+
+.ingredient-item {
+  padding: 10px;
+}
+
+.ingredient-item:hover {
+  cursor: pointer;
+  text-decoration: line-through;
+}

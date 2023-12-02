@@ -8,14 +8,14 @@
 }
 
 .nav-item {
-  color: rgb(138, 138, 138);
+  color: white;
   margin: 40px;
-  font-family: "Courier New", monospace;
+  /* font-family: "Courier New", monospace; */
   font-size: 17px;
-  font-weight: bold;
+  font-weight: medium;
   text-decoration: none;
 }
 
 .nav-item:hover {
-  color: red;
+  color: grey;
 }

@@ -1,8 +1,9 @@
 import openai
 import re
 import json
+import config
 
-openai.api_key = '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'
+openai.api_key = config.getConfigKey()
 
 
 # generate response from chatgpt api

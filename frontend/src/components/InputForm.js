@@ -1,6 +1,7 @@
+import "../styles/InputForm.css";
 import { useState } from "react";
 
-function InputForm() {
+function InputForm({ handler }) {
   // create input form for the home page
   // initially has fields for 3 ingredients and their measurements
   // use an add ingredient button to create a new input field for the
@@ -50,7 +51,7 @@ function InputForm() {
         fetch("http://127.0.0.1:5000/chat-gpt", req)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            handler(data);
           });
       } catch {
         console.log("Post request failed");
@@ -58,47 +59,80 @@ function InputForm() {
     }
   };
 
+  function deleteIngredient(index) {
+    const updatedIngredients = ingredients.filter((_, i) => i !== index);
+    setIngredients(updatedIngredients);
+  }
+
   return (
     <div className="outline">
-      <div className="input-holder">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            addIngredient();
-          }}
-        >
-          <input
-            type="text"
-            placeholder="Quantity"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          <select value={unit} onChange={(e) => setUnit(e.target.value)}>
-            <option value="">Select Unit</option>
-            <option value="g">gram(s)</option>
-            <option value="cup">cup(s)</option>
-            <option value="ml">milliliter(s)</option>
-            <option value="tbsp">tablespoon(s)</option>
-            <option value="tsp">teaspoon(s)</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Ingredient"
-            value={ingredientName}
-            onChange={(e) => setIngredientName(e.target.value)}
-          />
-          <button type="submit">Add Ingredient</button>
-        </form>
-      </div>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addIngredient();
+        }}
+      >
+        <div className="input-holder">
+          <div className="input-wrapper">
+            <input
+              className="input-fields"
+              type="text"
+              placeholder="Quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            />
+          </div>
+          <div className="select-wrapper">
+            <select
+              className="select-meas"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+            >
+              <option value="">Select Unit</option>
+              <option value="g">gram(s)</option>
+              <option value="cup">cup(s)</option>
+              <option value="ml">milliliter(s)</option>
+              <option value="tbsp">tablespoon(s)</option>
+              <option value="tsp">teaspoon(s)</option>
+            </select>
+          </div>
+          <div className="input-wrapper">
+            <input
+              className="input-fields"
+              type="text"
+              placeholder="Ingredient"
+              value={ingredientName}
+              onChange={(e) => setIngredientName(e.target.value)}
+            />
+          </div>
+          <button className="ingred-button" type="submit">
+            Add
+          </button>
+        </div>
+      </form>
       <div>
-        <ol>
+        <ol className="ingredients">
           {ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
+            <li
+              className="ingredient-item"
+              key={index}
+              onClick={() => deleteIngredient(index)}
+            >
+              {ingredient}
+            </li>
           ))}
         </ol>
       </div>
-      <button onClick={clearIngredients}>Clear</button>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="button-holder">
+        <button className="button-submit" onClick={clearIngredients}>
+          Clear All
+        </button>
+        {ingredients.length > 4 ? (
+          <button className="button-submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }
